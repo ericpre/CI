@@ -1,16 +1,17 @@
 steps:
 - bash: |
-    echo "##vso[task.prependpath]$CONDA/bin"
+    echo "##vso[task.prependpath]$HOME/mambaforge/bin"
   displayName: Add conda to PATH (Linux)
   condition: eq(variables['Agent.OS'], 'Linux')
 
 - bash: |
-    echo "##vso[task.prependpath]$CONDA/bin"
-    sudo chown -R $USER $CONDA
+    echo "##vso[task.prependpath]$HOME/mambaforge/bin"
+    sudo chown -R $USER $HOME/mambaforge
   displayName: Add conda to PATH (OS X)
   condition: eq(variables['Agent.OS'], 'Darwin')
 
 - powershell: |
-    Write-Host "##vso[task.prependpath]$env:CONDA\Scripts"
+    Write-Host "##vso[task.prependpath]$env:UserProfile\Mambaforge\Scripts"
   displayName: Add conda to PATH (Windows)
   condition: eq(variables['Agent.OS'], 'Windows_NT')
+
