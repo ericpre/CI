@@ -49,9 +49,10 @@ pool:
   vmImage: '$(vmImage)'
 
 steps:
-- template: azure_pipelines/clone_ci-scripts_repo.yml@templates
-- template: azure_pipelines/activate_conda.yml@templates
-- template: azure_pipelines/setup_anaconda_packages.yml@templates
+- template: azure_pipelines/clone_ci-scripts_repo.yml
+- template: azure_pipelines/activate_conda.yml
+- template: azure_pipelines/install_mamba.yml
+- template: azure_pipelines/setup_anaconda_packages.yml
 
 - bash: |
     source activate $ENV_NAME
