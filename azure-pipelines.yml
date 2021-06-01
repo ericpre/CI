@@ -51,7 +51,6 @@ pool:
 steps:
 - template: azure_pipelines/clone_ci-scripts_repo.yml
 - template: azure_pipelines/activate_conda.yml
-- template: azure_pipelines/install_mamba.yml
 - template: azure_pipelines/setup_anaconda_packages.yml
 
 - bash: |

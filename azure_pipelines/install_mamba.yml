@@ -1,4 +1,0 @@
-steps:
-- bash: |
-    conda install mamba -c conda-forge -y
-  displayName: Install mamba
