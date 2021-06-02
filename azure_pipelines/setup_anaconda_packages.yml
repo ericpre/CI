@@ -1,4 +1,12 @@
 steps:
 - bash: |
+    source activate $(MAMBAFORGE_PATH)
     source ci-scripts/conda_setup_environment.sh
-  displayName: Setup Anaconda packages
+  displayName: Setup Anaconda packages (Unix)
+  condition: not(eq(variables['Agent.OS'], 'Windows_NT'))
+
+- script: |
+    call activate $(MAMBAFORGE_PATH)
+    bash ci-scripts/conda_setup_environment.sh
+  displayName: Setup Anaconda packages (Windows)
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
