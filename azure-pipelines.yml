@@ -26,38 +26,38 @@ strategy:
     Linux_Python38:
       vmImage: 'ubuntu-latest'
       PYTHON_VERSION: '3.8'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)/mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)/miniforge3
     Linux_Python37:
       vmImage: 'ubuntu-latest'
       PYTHON_VERSION: '3.7'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)/mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)/miniforge3
     Linux_Python36:
       vmImage: 'ubuntu-latest'
       PYTHON_VERSION: '3.6'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)/mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)/miniforge3
     MacOS_Python38:
       vmImage: 'macOS-latest'
       PYTHON_VERSION: '3.8'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)/mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)/miniforge3
     MacOS_Python36:
       vmImage: 'macOS-latest'
       PYTHON_VERSION: '3.6'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)/mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)/miniforge3
     Windows_Python38:
       vmImage: 'windows-latest'
       PYTHON_VERSION: '3.8'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)\mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)\miniforge3
     Windows_Python36:
       vmImage: 'windows-latest'
       PYTHON_VERSION: '3.6'
-      MAMBAFORGE_PATH: $(Agent.BuildDirectory)\mambaforge
+      MINIFORGE_PATH: $(Agent.BuildDirectory)\miniforge3
 
 pool:
   vmImage: '$(vmImage)'
 
 steps:
 - template: azure_pipelines/clone_ci-scripts_repo.yml@templates
-- template: azure_pipelines/install_mambaforge.yml@templates
+- template: azure_pipelines/install_miniforge.yml@templates
 - template: azure_pipelines/activate_conda.yml@templates
 - template: azure_pipelines/setup_anaconda_packages.yml@templates
 
